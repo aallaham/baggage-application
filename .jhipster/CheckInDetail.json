@@ -1,0 +1,42 @@
+{
+  "name": "CheckInDetail",
+  "fields": [
+    {
+      "fieldName": "memberName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pnrNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "checkInStatus",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "segment",
+      "otherEntityRelationshipName": "checkInDetail",
+      "relationshipName": "segment"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "baggageData",
+      "otherEntityRelationshipName": "checkInDetail",
+      "relationshipName": "baggageData"
+    }
+  ],
+  "changelogDate": "20201203083241",
+  "entityTableName": "check_in_detail",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

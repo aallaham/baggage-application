@@ -1,0 +1,41 @@
+{
+  "name": "BaggageData",
+  "fields": [
+    {
+      "fieldName": "baggageId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "qrCode",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "checkInDetail",
+      "otherEntityRelationshipName": "baggageData",
+      "relationshipName": "checkInDetail",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201203083441",
+  "entityTableName": "baggage_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Segment",
+  "fields": [
+    {
+      "fieldName": "seatNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "departureDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "checkInDetail",
+      "otherEntityRelationshipName": "segment",
+      "relationshipName": "checkInDetail",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201203083341",
+  "entityTableName": "segment",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
