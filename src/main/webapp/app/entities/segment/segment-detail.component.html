@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="segment">
+            <h2><span jhiTranslate="baggageHandlerApp.segment.detail.title">Segment</span> {{ segment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="baggageHandlerApp.segment.seatNumber">Seat Number</span></dt>
+                <dd>
+                    <span>{{ segment.seatNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="baggageHandlerApp.segment.departureDate">Departure Date</span></dt>
+                <dd>
+                    <span>{{ segment.departureDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="baggageHandlerApp.segment.checkInInfo">Check In Info</span></dt>
+                <dd>
+                    <div *ngIf="segment.checkInInfo">
+                        <a [routerLink]="['/check-in-info', segment.checkInInfo?.id, 'view']">{{ segment.checkInInfo?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/segment', segment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

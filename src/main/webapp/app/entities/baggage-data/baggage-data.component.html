@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="baggageHandlerApp.baggageData.home.title">Baggage Data</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-baggage-data" [routerLink]="['/baggage-data/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="baggageHandlerApp.baggageData.home.createLabel">
+            Create a new Baggage Data
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="baggageData?.length === 0">
+        <span jhiTranslate="baggageHandlerApp.baggageData.home.notFound">No baggageData found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="baggageData && baggageData.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="baggageHandlerApp.baggageData.baggageId">Baggage Id</span></th>
+                    <th scope="col" ><span jhiTranslate="baggageHandlerApp.baggageData.weight">Weight</span></th>
+                    <th scope="col" ><span jhiTranslate="baggageHandlerApp.baggageData.status">Status</span></th>
+                    <th scope="col" ><span jhiTranslate="baggageHandlerApp.baggageData.qrCode">Qr Code</span></th>
+                    <th scope="col" ><span jhiTranslate="baggageHandlerApp.baggageData.checkInInfo">Check In Info</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let baggageData of baggageData ;trackBy: trackId">
+                    <td><a [routerLink]="['/baggage-data', baggageData.id, 'view']">{{ baggageData.id }}</a></td>
+                    <td>{{ baggageData.baggageId }}</td>
+                    <td>{{ baggageData.weight }}</td>
+                    <td>{{ baggageData.status }}</td>
+                    <td>{{ baggageData.qrCode }}</td>
+                    <td>
+                        <div *ngIf="baggageData.checkInInfo">
+                            <a [routerLink]="['/check-in-info', baggageData.checkInInfo?.id, 'view']" >{{ baggageData.checkInInfo?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/baggage-data', baggageData.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/baggage-data', baggageData.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(baggageData)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

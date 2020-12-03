@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-segment-heading" jhiTranslate="baggageHandlerApp.segment.home.createOrEditLabel">Create or edit a Segment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="baggageHandlerApp.segment.seatNumber" for="field_seatNumber">Seat Number</label>
+                    <input type="text" class="form-control" name="seatNumber" id="field_seatNumber"
+                           formControlName="seatNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="baggageHandlerApp.segment.departureDate" for="field_departureDate">Departure Date</label>
+                    <div class="d-flex">
+                        <input id="field_departureDate" type="datetime-local" class="form-control" name="departureDate" formControlName="departureDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="baggageHandlerApp.segment.checkInInfo" for="field_checkInInfo">Check In Info</label>
+                    <select class="form-control" id="field_checkInInfo" name="checkInInfo" formControlName="checkInInfo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="checkInInfoOption.id === editForm.get('checkInInfo')!.value?.id ? editForm.get('checkInInfo')!.value : checkInInfoOption" *ngFor="let checkInInfoOption of checkininfos; trackBy: trackById">{{ checkInInfoOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
