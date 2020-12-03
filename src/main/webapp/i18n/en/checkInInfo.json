@@ -1,0 +1,26 @@
+{
+  "baggageHandlerApp": {
+    "checkInInfo": {
+      "home": {
+        "title": "Check In Infos",
+        "createLabel": "Create a new Check In Info",
+        "createOrEditLabel": "Create or edit a Check In Info",
+        "notFound": "No Check In Infos found"
+      },
+      "created": "A new Check In Info is created with identifier {{ param }}",
+      "updated": "A Check In Info is updated with identifier {{ param }}",
+      "deleted": "A Check In Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Check In Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Check In Info"
+      },
+      "memberName": "Member Name",
+      "pnrNumber": "Pnr Number",
+      "checkInStatus": "Check In Status",
+      "segment": "Segment",
+      "baggageData": "Baggage Data"
+    }
+  }
+}

@@ -47,6 +47,11 @@ public class CacheConfiguration {
             createCache(cm, com.hackathon.baggage.domain.User.class.getName());
             createCache(cm, com.hackathon.baggage.domain.Authority.class.getName());
             createCache(cm, com.hackathon.baggage.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.hackathon.baggage.domain.CheckInInfo.class.getName());
+            createCache(cm, com.hackathon.baggage.domain.CheckInInfo.class.getName() + ".segments");
+            createCache(cm, com.hackathon.baggage.domain.CheckInInfo.class.getName() + ".baggageData");
+            createCache(cm, com.hackathon.baggage.domain.Segment.class.getName());
+            createCache(cm, com.hackathon.baggage.domain.BaggageData.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
