@@ -1,13 +1,11 @@
 package com.hackathon.baggage.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.Instant;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Segment.
@@ -16,7 +14,6 @@ import java.time.Instant;
 @Table(name = "segment")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Segment implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,8 +26,8 @@ public class Segment implements Serializable {
     @Column(name = "departure_date")
     private Instant departureDate;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "segments", allowSetters = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "checkInInfo_id")
     private CheckInInfo checkInInfo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -80,6 +77,7 @@ public class Segment implements Serializable {
     public void setCheckInInfo(CheckInInfo checkInInfo) {
         this.checkInInfo = checkInInfo;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

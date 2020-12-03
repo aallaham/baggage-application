@@ -1,13 +1,11 @@
 package com.hackathon.baggage.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A CheckInInfo.
@@ -16,7 +14,6 @@ import java.util.Set;
 @Table(name = "check_in_info")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CheckInInfo implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -32,7 +29,7 @@ public class CheckInInfo implements Serializable {
     @Column(name = "check_in_status")
     private String checkInStatus;
 
-    @OneToMany(mappedBy = "checkInInfo")
+    @OneToMany(mappedBy = "checkInInfo", fetch = FetchType.LAZY)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Segment> segments = new HashSet<>();
 
@@ -137,6 +134,7 @@ public class CheckInInfo implements Serializable {
     public void setBaggageData(Set<BaggageData> baggageData) {
         this.baggageData = baggageData;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
