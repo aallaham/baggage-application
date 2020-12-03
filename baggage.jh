@@ -1,0 +1,28 @@
+
+entity CheckInDetail {
+	memberName String,
+    pnrNumber String,
+    checkInStatus String
+}
+
+entity Segment {
+	seatNumber String,
+    departureDate Instant
+}
+
+entity BaggageData {
+	baggageId String,
+	weight Long,
+	status String,
+    qrCode String
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	CheckInDetail to Segment{checkInDetail},
+	CheckInDetail to BaggageData{checkInDetail}
+}
+
+
+
